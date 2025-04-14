@@ -1,0 +1,9 @@
+---
+- name: Create users
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    password: "{{ item.password | password_hash('sha512') }}"  # Plain password is not hashed, it's used directly here
+    shell: /bin/bash
+    state: present
+  with_items: "{{ users }}"
+

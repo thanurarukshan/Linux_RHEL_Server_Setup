@@ -1,0 +1,46 @@
+- name: Test connectivity to target servers
+  hosts: all
+  gather_facts: no
+  roles:
+    - connectivity-test
+
+- name: Configure Network
+  hosts: all
+  become: yes
+  roles:
+    - network-configuration-set
+    #- user-management
+    #- package-management 
+    #- system-tuning
+    #- monitoring
+
+- name: Disk Partitioning
+  hosts: all
+  become: yes
+  roles:
+    #- server-partitioning
+
+- name: Setup Monitoring
+  hosts: all
+  become: yes
+  roles:
+    #- grafana
+    #- node_exporter
+    #- prometheus_installation
+    #- snmp_notifier
+
+- name: OS Configurations
+  hosts: all
+  become: yes
+  roles:
+    #- chrony_config
+    #- selinux-configuration 
+    #- systemctl_runlevel
+    #- yum_update_and_sync
+
+- name: Scan the server
+  hosts: all
+  become: yes
+  roles:
+    #- scan
+

@@ -1,0 +1,9 @@
+# List of users to create
+users:
+  - name: devops
+    password: "password123"  # Plain password (not hashed)
+  - name: admin
+    password: "adminpassword"
+  - name: testuser
+    password: "testpassword"
+

@@ -98,6 +98,6 @@ We welcome contributions from the community! To contribute:
 Report issues or suggest enhancements through the GitHub Issues page.
 
 ## Contact
-í ½í³§ For queries or contributions, email: thanurarukshan2000@gmail.com
+For queries or contributions, email: thanurarukshan2000@gmail.com
 
 

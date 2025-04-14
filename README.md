@@ -1,27 +1,28 @@
-# Network Configuration Automation with Ansible
+# Linux RHEL Server Setup
 
 ## Overview
-This project provides an automated approach to configuring, managing, and monitoring network and system settings on multiple Linux servers using Ansible. The playbook is designed to ensure consistency and reliability across environments.
+This project provides an automated approach to configuring, managing, and monitoring network and system settings on multiple Linux servers using Ansible. The playbook ensures consistency, reliability, and ease of management across different environments.
 
 ## Features
-- **Network Configuration** - Set up network interfaces, IP addressing, and routing.
-- **User Management** - Create and manage user accounts.
-- **Package Management** - Install and update required packages.
-- **System Tuning** - Optimize system settings for performance.
-- **Monitoring** - Set up monitoring tools such as Prometheus, Grafana, and SNMP.
-- **Security** - Configure SELinux and firewall settings.
-- **Time Synchronization** - Set up Chrony for accurate timekeeping.
-- **Server Partitioning** - Automate disk partitioning.
-- **System Updates** - Keep the system up-to-date with Yum updates.
+- **Network Configuration** – Automate setup of network interfaces, IP addressing, and routing.
+- **User Management** – Create and manage user accounts with defined permissions.
+- **Package Management** – Install and update required packages using package managers.
+- **System Tuning** – Optimize system-level parameters for better performance.
+- **Monitoring** – Deploy Prometheus, Grafana, and SNMP for comprehensive monitoring.
+- **Security** – Configure SELinux, firewall (firewalld/iptables), and enhance system hardening.
+- **Time Synchronization** – Configure Chrony for accurate timekeeping across servers.
+- **Server Partitioning** – Automate disk partitioning and mounting.
+- **System Updates** – Perform Yum updates to keep systems secure and current.
+- **Configuration Scan** – Generate detailed scan reports of system configurations.
 
 ## Prerequisites
-- **Ansible Installed** - Ensure Ansible is installed on the control node.
-- **SSH Access** - The control node must have SSH access to target servers.
-- **Sudo Privileges** - The user running the playbook should have sudo privileges.
+- **Ansible Installed** – Ensure Ansible is installed on the control node.
+- **SSH Access** – Control node must have SSH access to all target nodes.
+- **Sudo Privileges** – The Ansible user must have sudo access on the target machines.
 
 ## Project Structure
 ```sh
-network-configuration-automation-ansible/
+linux-rhel-server-setup/
 │── ansible.cfg
 │── inventory/
 │   ├── dev.ini
@@ -49,45 +50,54 @@ network-configuration-automation-ansible/
 ## Installation
 Clone the repository:
 ```sh
-git clone https://github.com/thanurarukshan/network-configuration-automation-ansible.git
+git clone https://github.com/thanurarukshan/Linux_RHEL_Server_Setup.git
 ```
 
 Navigate into the project directory:
 ```sh
-cd network-configuration-automation-ansible
+cd linux-rhel-server-setup
 ```
 
-Install Ansible if not already installed:
+Install Ansible:
 ```sh
-sudo apt update && sudo apt install ansible -y  # For Debian-based systems
-sudo yum install ansible -y  # For RedHat-based systems
+# For Debian-based systems
+sudo apt update && sudo apt install ansible -y
+
+# For RHEL/CentOS-based systems
+sudo yum install ansible -y
 ```
 
 ## Usage
-Update the `inventory/dev.ini` file with your target servers.
-
-Run the playbook:
+1. Edit the `inventory/dev.ini` file to include your target servers.
+2. Run the playbook:
 ```sh
 ansible-playbook -i playbooks/dev.ini playbooks/site.yml --ask-become-pass
 ```
+3. Monitor playbook execution and review output or logs for any errors.
 
-Monitor execution and check logs for any failures.
-
-## Roles Explained
-Each role is modular and serves a specific purpose in automating network and system management:
-- **connectivity-test** - Ensures target servers are reachable.
-- **network-configuration-set** - Configures network interfaces.
-- **user-management** - Manages user creation and access.
-- **package-management** - Installs necessary software packages.
-- **system-tuning** - Optimizes system performance.
-- **monitoring** - Deploys monitoring tools like Prometheus and Grafana.
-- **server-partitioning** - Automates disk partitioning.
-- **security** - Configures firewall and SELinux policies.
-- **time-sync** - Ensures accurate time synchronization using Chrony.
-- **scan** - Scans system configurations and generates reports.
+## Role Descriptions
+- **connectivity-test** – Verifies server reachability before execution.
+- **network-configuration-set** – Applies IP settings, routes, and network interfaces.
+- **user-management** – Automates user and group account creation.
+- **package-management** – Installs OS-level dependencies and packages.
+- **system-tuning** – Adjusts kernel and sysctl settings.
+- **monitoring** – Installs Prometheus, Grafana, Node Exporter, and SNMP agents.
+- **server-partitioning** – Automates disk partitioning using `fdisk` or `parted`.
+- **security** – Configures SELinux, firewalls, and secures open ports.
+- **time-sync** – Installs and configures Chrony for NTP synchronization.
+- **scan** – Collects and saves detailed config reports (`scan_reports/`) with metadata.
 
 ## Contribution
-Feel free to fork the repository, create a feature branch, and submit a pull request. Issues and suggestions are welcome!
+We welcome contributions from the community! To contribute:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature-name`)
+3. Commit your changes
+4. Push to your fork
+5. Submit a pull request
+
+Report issues or suggest enhancements through the GitHub Issues page.
 
 ## Contact
-For any queries or contributions, reach out to thanurarukshan2000@gmail.com.
+������ For queries or contributions, email: thanurarukshan2000@gmail.com
+
+
